@@ -1,0 +1,37 @@
+:root {
+  // Light theme colors
+  --primary-color: #007AFF;
+  --background-color: #ffffff;
+  --surface-color: #f5f5f7;
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --border-color: #d2d2d7;
+  
+  // 添加 RGB 版本的主色，用于透明度
+  --primary-color-rgb: 0, 122, 255;
+  
+  // Canvas colors
+  --grid-color: rgba(0, 0, 0, 0.1);
+  --canvas-bg: #ffffff;
+}
+
+[data-theme="dark"] {
+  --primary-color: #0A84FF;
+  --background-color: #000000;
+  --surface-color: #1c1c1e;
+  --text-primary: #f5f5f7;
+  --text-secondary: #86868b;
+  --border-color: #424245;
+  
+  // 添加 RGB 版本的主色
+  --primary-color-rgb: 10, 132, 255;
+  
+  // Canvas colors
+  --grid-color: rgba(255, 255, 255, 0.1);
+  --canvas-bg: #1c1c1e;
+}
+
+// Transitions
+.theme-transition {
+  transition: background-color 0.3s ease, color 0.3s ease;
+} 
