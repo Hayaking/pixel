@@ -36,7 +36,6 @@
             width: `${cellSize}px`,
             height: `${cellSize}px`,
           }"
-          @mousedown="(e) => startDrawing(x - 1, y - 1, e)"
           @mousemove="() => handleCellHover(x - 1, y - 1)"
           @mouseleave="() => handleCellMouseLeave(x - 1, y - 1)"
         />
@@ -313,17 +312,32 @@ const handleCellMouseLeave = (x: number, y: number) => {
 const handleMouseDown = (e: MouseEvent) => {
   if (currentTool.value === ToolType.MOVE || e.button === 1 || e.button === 2) {
     startPan(e);
+  } else if (e.button === 0) {  // 添加左键判断
+    const rect = containerRef.value!.getBoundingClientRect();
+    const x = Math.floor((e.clientX - rect.left - position.value.x) / (cellSize * scale.value));
+    const y = Math.floor((e.clientY - rect.top - position.value.y) / (cellSize * scale.value));
+    startDrawing(x, y, e);
   }
 };
 
 const handleMouseMove = (e: MouseEvent) => {
   if (isPanning.value) {
     pan(e);
+  } else if (isDrawing.value) {  // 添加绘制判断
+    const rect = containerRef.value!.getBoundingClientRect();
+    const x = Math.floor((e.clientX - rect.left - position.value.x) / (cellSize * scale.value));
+    const y = Math.floor((e.clientY - rect.top - position.value.y) / (cellSize * scale.value));
+    draw(x, y);
   }
 };
 
 const handleMouseUp = () => {
-  stopPan();
+  if (isPanning.value) {
+    stopPan();
+  }
+  if (isDrawing.value) {
+    endDrawing();
+  }
 };
 
 // 处理容器鼠标离开
