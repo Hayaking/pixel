@@ -43,7 +43,7 @@ A modern pixel art editor built with Vue 3, featuring real-time drawing, various
 
 1. Clone the repository
 bash
-git clone https://github.com/yourusername/pixel-canvas.git
+git clone https://github.com/Hayaking/pixel.git
 
 2. Install dependencies
 dependencies
@@ -101,7 +101,7 @@ npm run build
 
 1. 克隆仓库
 bash
-git clone https://github.com/yourusername/pixel-canvas.git
+git clone https://github.com/Hayaking/pixel.git
 
 2. 安装依赖
 bash
